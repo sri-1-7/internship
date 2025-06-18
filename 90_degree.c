@@ -17,7 +17,7 @@ void main()
     scanf("%d",&rows);
     printf( "Enter the no of coloum:");
     scanf("%d",&coloums);
-    
+    printf("\n");
     //reading the  matrix
     for(counter1=0;counter1<rows;counter1++)
     {
