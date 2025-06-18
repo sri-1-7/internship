@@ -11,6 +11,7 @@ void main()
     int size=sizeof(array)/sizeof(array[0]);//size of array
     int counter1;//counter variable
     int counter2;//another counter variable
+    int flag=0;//flag variable
     
     //reading the target
     printf("Enter the tatget:");
@@ -23,8 +24,13 @@ void main()
         {
             if(array[counter1]+array[counter2]==target)
             {
+               flag=1;
                 printf("%d+%d=%d\n",array[counter1],array[counter2],target);
             }
         }
+    }
+    if(!flag)
+    {
+        printf("no values match");
     }
 }
