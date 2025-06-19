@@ -121,7 +121,6 @@ void main()
         }
         counter3--;
     }
-    display(array,rows,coloums);
     if(coloums>=rows)
     {
     for(counter1=0;counter1<rows;counter1++)
@@ -159,7 +158,7 @@ void main()
     coloums=temp;
     printf("rotated matrix:\n");
     display(array,rows,coloums);
-    printf("if u want to continue with another array (any any integers than 0-yes 0-no):");
+    printf("if u want to continue with another array (any integers other than 0- yes 0-no):");
     scanf("%d",&flag2);
     counter1=0;
     counter2=0;
