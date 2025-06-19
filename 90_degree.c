@@ -27,10 +27,8 @@ void main()
             scanf("%d",&array[counter1][counter2]);
     }  
     }
-    printf("\n");
-    
     //printing the 3x3 matrix
-    printf("The entered array\n");
+    printf("\nThe entered array\n");
     for(counter1=0;counter1<rows;counter1++)
     {
         for(counter2=0;counter2<coloums;counter2++)
@@ -39,10 +37,9 @@ void main()
     }  
     printf("\n");
     }
-    printf("\n");
     
     //printing the rotated matrix
-    printf("The rotated array:\n");
+    printf("\nThe rotated array:\n");
     for(counter1=0;counter1<rows;counter1++)
     {
         for(counter2=coloums-1;counter2>=0;counter2--)
