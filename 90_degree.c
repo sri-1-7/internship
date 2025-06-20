@@ -35,7 +35,7 @@ void main()
     int flag=1;
     int flag2=1;
     int temp;
-
+    counter2=0;
     printf("\n\"The no of row and coloum must be 1-10\"\n");
     while(flag2)
     {
@@ -72,6 +72,7 @@ void main()
     while(flag)
     {
         scanf("%d",&coloums);
+        counter1++;
         if(coloums>0&&coloums<11)
         {
             flag=0;
@@ -87,7 +88,7 @@ void main()
                 printf("ur number is greater then 10\n");
             }
             
-            counter1++;
+            
             if(counter1==3)
             {
                  printf("try again\n");
@@ -156,12 +157,13 @@ void main()
     temp=rows;
     rows=coloums;
     coloums=temp;
-    printf("rotated matrix:\n");
+    printf("rotatated matrix:\n");
     display(array,rows,coloums);
-    printf("if u want to continue with another array (any integers other than 0- yes 0-no):");
+    printf("if u want to continue with another array (any integers  1-10 -yes 0-no):");
     scanf("%d",&flag2);
-    counter1=0;
     counter2=0;
+    counter1=0;
+    
 }
 }
 
