@@ -6,9 +6,9 @@
 #define MAX_SLOT 10
 
 //function declaration
-int input(float person[MAX_SLOT][2],int slot);
-int slot_corection(float person[MAX_SLOT][2],int *slot1);
-int standard_convertion(float person[MAX_SLOT][2],char standard[4],int slot);
+int input(float person[MAX_SLOT][2],int slot);//for getting input
+int slot_corection(float person[MAX_SLOT][2],int *slot1);//for crrecting the slots
+int standard_convertion(float person[MAX_SLOT][2],char standard[4],int slot);//to convert UTS
 
 //function definition
 int input(float person[MAX_SLOT][2],int slot)
@@ -140,13 +140,18 @@ int standard_convertion(float person[MAX_SLOT][2],char standard[4],int slot)
 //main function
 void main()
 {
+    //array constant
     float person1[MAX_SLOT][2];
-    int slot1;
     float person2[MAX_SLOT][2];
+    //to store the slot count
+    int slot1;
     int slot2;
+    //to store time standard
     char time_standard1[4];
     char time_standard2[4];
-    float duration;
+    float duration;//to store duration
+
+    //reading the datas and printing the intersection
     printf("For person1\n");
     printf("Enter the no of slot:");
     scanf("%d",&slot1);
@@ -191,13 +196,11 @@ void main()
         {
             if ((int)(temp * 100) == (int)(person2[counter2][0] * 100))
             {
-                printf("%f\n",person1[counter1][1] - temp); 
-                printf("%f\n",person2[counter2][1] - person2[counter2][0]);
                 if (person1[counter1][1] - temp >= duration &&
                     person2[counter2][1] - person2[counter2][0] >= duration)
                 {
-                    printf("entered");
-                    printf("Slots available starting time  %.2f till duration\n", temp);
+
+                    printf("Slots available starting time  %.2f till duration period\n", temp);
                 }
                 break; 
             }
