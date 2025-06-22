@@ -23,12 +23,17 @@ int compare(const void *a ,const void *b)
 //main function
 void main()
 {
+    //array constant
     int array1[MAX];
     int array2[MAX];
+    //to store the array length
     int length1;
     int length2;
+    //counter variable
     int counter1;
     int counter2;
+
+    //reading the length and array then sorting for both
     printf("Enter the length for array1:");
     scanf("%d",&length1);
     input(array1,length1);
@@ -37,6 +42,8 @@ void main()
     scanf("%d",&length2);
     input(array2,length2);
     qsort(array2,length2,sizeof(int),compare);
+    
+    //merging the arrays and printng the result
     counter1=length1;
     for(counter2=0;counter2<length2;counter2++)
     {
