@@ -15,7 +15,7 @@ void main()
     scanf("%d",&counter);
     if(counter=1)
     {
-    create_node(&old,&fresh);
+    create_node(&old);
     }
     current=head;
     while(current!=NULL)
@@ -26,9 +26,11 @@ void main()
         current=next;
     }
     head=previous;
+    printf("\nThe reversed list is:\n");
     while(head!=NULL)
     {
         printf("%d ",head->data);
         head=head->link;
     }
+
 }

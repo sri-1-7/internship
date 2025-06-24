@@ -1,46 +1,32 @@
 //header file
-#include<stdio.h>
-#include<stdlib.h>
+#include"create_node.h"
 
 //main function
 void main()
 {
-    struct node
-    {
-        int data;
-        struct node *link
-    };struct node *head,*fresh,*old;//structure and structure variables for creating linked list
-    int limit;//to get the size
+    struct node *head,*old;//structure and structure variables for creating linked list
+    int limit=1;//to get the size
     int mid;//to find mid and store mid
     int traverse;//to find mid
     int counter;//counter variable
     
     //reading the input
     head=(struct node*)malloc(sizeof(struct node));
-    printf("Enter the no of datas:");
-    scanf("%d",&limit);
-    if(limit<=0)
-    {
-        printf("Enter the limit <0\n");
-        exit(1);
-    }
-    printf("Enter the datas:\n");
+    printf("Enter the data:");
     scanf("%d",&head->data);
     head->link=NULL;
     old=head;
-    for(counter=0;counter<limit-1;counter++)
+    printf("if u want to enter one more value [1-yes/0-no]:");
+    scanf("%d",&counter);
+    if(counter=1)
     {
-        fresh=(struct node*)malloc(sizeof(struct node));
-        scanf("%d",&fresh->data);
-        fresh->link=NULL;
-        old->link=fresh;
-        old=old->link;
+    limit=create_node(&old);
     }
 
     //finding and printing mid
     traverse=0;
-    old=head;
     mid=limit/2;
+    old=head;
     while(traverse<mid)
     {
         old=old->link;

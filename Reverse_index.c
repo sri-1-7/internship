@@ -1,47 +1,51 @@
 //header file
 #include<stdio.h>
 #include<stdlib.h>
-
-//main function
+int create_node();
+struct node
+{
+    int data;
+    struct node *previous;
+    struct node *next;
+};
+struct node *head,*old,*fresh,*finder;//struct and struct variable
+int create_node()
+{
+    int counter=1;
+    int size=1;
+    while(counter)
+    {
+        fresh=malloc(sizeof(struct node));
+        scanf("%d",&fresh->data);
+        size++;
+        fresh->previous=old;
+        fresh->next=NULL;
+        old->next=fresh;
+        old=old->next;
+        printf("if u want to enter one more value [1-yes/0-no]:");
+        scanf("%d",&counter);
+    }
+    return size;
+}
 void main()
 {
-    struct node
-    {
-        int data;
-        struct node *previous;
-        struct node *next;
-    };
-    struct node *head,*old,*fresh,*finder;//struct and struct variable
-    int size;//to store size
     int counter;//counter variable
     int reverse_index;//to store the reverse index value
-    
-    //reading the size
-    printf("enter the size:");
-    scanf("%d",&size);
-    if(size<=0)
-    {
-        exit(1);
-    }
-
-    //reading the list elements 
-    printf("enter the elements:\n");
+    int size;//to store of the list
+    printf("enter the elements:");
     head=malloc(sizeof(struct node));
     scanf("%d",&head->data);
     head->previous=NULL;
     head->next=NULL;
     old=head;
-    for(counter=0;counter<size-1;counter++)
+    printf("if u want to enter one more value [1-yes/0-no]:");
+    scanf("%d",&counter);
+    if(counter=1)
     {
-        fresh=malloc(sizeof(struct node));
-        scanf("%d",&fresh->data);
-        fresh->previous=old;
-        fresh->next=NULL;
-        old->next=fresh;
-        old=old->next;
+    size=create_node();
     }
+    //reading the list elements 
     finder=fresh;
-    
     //reading the reverse index value
     printf("enter the index:");
     scanf("%d",& reverse_index);
