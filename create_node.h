@@ -26,3 +26,14 @@ int create_node(struct node **old)//function to create linked list
     }
     return size;
 }
+int print(struct node **head)
+{
+    struct node *traverse;
+    traverse=*head;
+    while(traverse!=NULL)
+    {
+        printf("%d ",traverse->data);
+        traverse=traverse->link;
+    }
+    return 1;
+}

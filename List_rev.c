@@ -17,6 +17,8 @@ void main()
     {
     create_node(&old);
     }
+    printf("\nEntered list:\n");
+    print(&head);
     current=head;
     while(current!=NULL)
     {

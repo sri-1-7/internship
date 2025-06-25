@@ -22,7 +22,8 @@ void main()
     {
     limit=create_node(&old);
     }
-
+    printf("\nEntered list:\n");
+    print(&head);
     //finding and printing mid
     traverse=0;
     mid=limit/2;
@@ -33,5 +34,5 @@ void main()
         traverse++;
     }
     mid=old->data;
-    printf("%d is the mid element\n",mid);
+    printf("\n%d is the mid element\n",mid);
 }
