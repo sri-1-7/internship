@@ -1,5 +1,5 @@
 //header file
-#include"create_node.h"
+#include"create_node.c"
 
 //main function
 void main()
