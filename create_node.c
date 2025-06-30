@@ -136,13 +136,13 @@ int insert_at_any(struct node**head,int *count,int place)//function to insert at
         }
         printf("insertion place:");
         scanf("%d",&place);
-        if(place>((*count)+1))
+        if(place<=0)
         {
-            if(place<=0)
-            {
             printf("not posible\n");
             return 1;
-            }
+        }
+        if(place>((*count)+1))
+        {
             printf("not posible\n");
             return 1;
         }
