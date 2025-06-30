@@ -15,7 +15,7 @@ void main()
     scanf("%d",&counter);
     if(counter=1)
     {
-    create_node(&old);
+    create_node_at_end(&old);
     }
     printf("\nEntered list:\n");
     print(&head);

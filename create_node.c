@@ -7,16 +7,17 @@ struct node{
         int data;
         struct node *link;
     };
-int create_node(struct node **old)//function to create linked list
+int create_node_at_end(struct node **old,int *count)//add values at the end of the list
 {   
     int counter=1;
     int size=1;
     struct node *fresh;
     while(counter)
     {
-        printf("Enter:");
+        printf("Enter the data:");
         fresh=(struct node *)malloc(sizeof(struct node));
         scanf("%d",&fresh->data);
+        (*count)++;
         size++;
         fresh->link=NULL;
         (*old)->link=fresh;
@@ -26,7 +27,42 @@ int create_node(struct node **old)//function to create linked list
     }
     return size;
 }
-int print(struct node **head)
+
+struct node* create_node_at_first(struct node **add,int *count)//add values at the bogining of the list
+{
+    struct node *fresh;//structure variable for link nodes
+    int counter=1;//counter variable
+
+    //linking nodes
+    while(counter)
+    {
+        printf("Enter the data:");
+        fresh=malloc(sizeof(struct node));
+        scanf("%d",&fresh->data);
+        fresh->link=*add;
+        (*count)++;
+        *add=fresh;
+        printf("Want to create an another node [1-yes/0-no]:");
+        scanf("%d",&counter);
+    }
+    return fresh;
+}
+struct node* reverse(struct node **head)//to reverse linked list
+{
+    struct node *current;
+    struct node *next=NULL;
+    struct node *previous=NULL;
+    current=*head;
+    while(current!=NULL)
+    {   
+       next=current->link;
+       current->link=previous;
+       previous=current;
+       current=next;
+    }
+    return previous;
+}
+int print(struct node **head)//function to display list
 {
     struct node *traverse;
     traverse=*head;
@@ -38,17 +74,8 @@ int print(struct node **head)
     printf("\n");
     return 1;
 }
-int insert(struct node **old,int item)
-{
-    struct node *fresh;
-    fresh=malloc(sizeof(struct node));
-    fresh->data=item;
-    fresh->link=NULL;
-    (*old)->link=fresh;
-    *old=(*old)->link;
-}
 
-int insert_at_any(struct node**head,int *count,int place)
+int insert_at_any(struct node**head,int *count,int place)//function to insert at place
 {
     int counter=1;
     struct node *traverse;
@@ -115,4 +142,14 @@ int insert_at_any(struct node**head,int *count,int place)
             return 1;
         }
     }
+}
+
+int insert(struct node **old,int item)//function to insert item in list
+{
+    struct node *fresh;
+    fresh=malloc(sizeof(struct node));
+    fresh->data=item;
+    fresh->link=NULL;
+    (*old)->link=fresh;
+    *old=(*old)->link;
 }
