@@ -136,14 +136,45 @@ int insert_at_any(struct node**head,int *count,int place)//function to insert at
         }
         printf("insertion place:");
         scanf("%d",&place);
-        if(place>(*count)&&(place-(*count))>1)
+        if(place>((*count)+1))
         {
+            if(place<=0)
+            {
+            printf("not posible\n");
+            return 1;
+            }
             printf("not posible\n");
             return 1;
         }
     }
 }
 
+struct node * delete_node(struct node ** old,int *count,int data)
+{
+    struct node *traverse;
+    struct node *previous;
+    struct node *next;
+    traverse=*old;
+    if(traverse->data==data)
+    {
+      (*count)--;  
+      *old=(*old)->link;
+      return *old;  
+    }
+    while(traverse!=NULL&&traverse->data!=data)
+    {
+        previous=traverse;
+        traverse=traverse->link;
+    }
+    if(traverse==NULL)
+    {
+        printf("data not found\n");
+        return *old;
+    }
+    previous->link=traverse->link;
+    (*count)--;
+    return *old; 
+}
 int insert(struct node **old,int item)//function to insert item in list
 {
     struct node *fresh;

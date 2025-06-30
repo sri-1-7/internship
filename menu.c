@@ -11,6 +11,7 @@ void main()
     int counter1=0;
     int count=0;
     int place;
+    int data;
     head=malloc(sizeof(struct node));
     printf("MENU:\n1.create a linked list\n2.add node at end\n3.add node at the first\n4.add node at middle\n5.delete node for a given value\n6.display\n7.reverse\n8.exit\n");
     while(1)
@@ -62,23 +63,53 @@ void main()
                 old=head;
                 printf("insertion place:");
                 scanf("%d",&place);
+                if(place==0||place<0)
+                {
+                    printf("not possible\n");
+                    break;
+                }
                 if(place<=count||(place-count)==1)
-            {
-                insert_at_any(&head,&count,place);
-            }
-            else
-            {
-                printf("not possible\n");
+                {
+                  insert_at_any(&head,&count,place);
+                }
+                else
+                {
+                    printf("not possible\n");
+                    printf("\nfor display-6\nfor add at end-2\nfor add at begining-3\nfor delete a node-5\nfor reverse-7\nexit-8\n");
+                    break;
+                }   
                 printf("\nfor display-6\nfor add at end-2\nfor add at begining-3\nfor delete a node-5\nfor reverse-7\nexit-8\n");
                 break;
             }
-            printf("\nfor display-6\nfor add at end-2\nfor add at begining-3\nfor delete a node-5\nfor reverse-7\nexit-8\n");
-            break;
+            case 5:
+            {
+                if(count>0)
+                {
+                    old=head;
+                    printf("Enter the data to delete:");
+                    scanf("%d",&data);
+                    head=delete_node(&old,&count,data);  
+                    printf("\nfor add at end-2\nfor add at begining-3\nfor add at middle-4\nfor delete a node-5\nfor reverse-7\nexit-8\n");
+                    break;
+                }
+                else
+                {
+                    printf("list is empty\n");
+                    printf("for create node -1\n");
+                }
+                printf("\nfor display-6\nfor add at end-2\nfor add at begining-3\nfor add at middle-5\nfor reverse-7\nexit-8\n");
+                break;
+      
             }
             case 6:
             {
-                print(&head);
-                printf("\nfor add at end-2\nfor add at begining-3\nfor add at middle-4\nfor delete a node-5\nfor reverse-7\nexit-8\n");
+                if(count>0)
+                {
+                    print(&head);
+                    printf("\nfor add at end-2\nfor add at begining-3\nfor add at middle-4\nfor delete a node-5\nfor reverse-7\nexit-8\n");
+                    break;
+                }
+                printf("list is empty\n");
                 break;
             }
             case 7:
