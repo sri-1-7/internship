@@ -9,9 +9,11 @@ struct node{
     };
 int create_node_at_end(struct node **old,int *count)//add values at the end of the list
 {   
-    int counter=1;
-    int size=1;
-    struct node *fresh;
+    int counter=1;//counter variable
+    int size=1;//to store the size of list
+    struct node *fresh;//structure variable used to add node
+
+    //adding nodes
     while(counter)
     {
         printf("Enter the data:");
@@ -49,10 +51,13 @@ struct node* create_node_at_first(struct node **add,int *count)//add values at t
 }
 struct node* reverse(struct node **head)//to reverse linked list
 {
+    //structure varaiables used to reverse a list
     struct node *current;
     struct node *next=NULL;
     struct node *previous=NULL;
     current=*head;
+
+    //reversing the list
     while(current!=NULL)
     {   
        next=current->link;
@@ -64,6 +69,7 @@ struct node* reverse(struct node **head)//to reverse linked list
 }
 int print(struct node **head)//function to display list
 {
+    //structure variables used to traverse
     struct node *traverse;
     traverse=*head;
     while(traverse!=NULL)
@@ -77,12 +83,15 @@ int print(struct node **head)//function to display list
 
 int insert_at_any(struct node**head,int *count,int place)//function to insert at place
 {
-    int counter=1;
+    int counter=1;//counter variable
+    //structure variable used to insert at position
     struct node *traverse;
     struct node *fresh;
     struct node *next;
     struct node *previous;
-    int counter1=1;
+    int counter1=1;//another variables
+
+    //inserting the new node
     while(counter1)
     {
         if(place==1)
@@ -149,12 +158,15 @@ int insert_at_any(struct node**head,int *count,int place)//function to insert at
     }
 }
 
-struct node * delete_node(struct node ** old,int *count,int data)
+struct node * delete_node(struct node ** old,int *count,int data)//to delete a node
 {
+    //structure variables used to deleteting a node
     struct node *traverse;
     struct node *previous;
     struct node *next;
     traverse=*old;
+
+    //deleting a node
     if(traverse->data==data)
     {
       (*count)--;  
@@ -177,7 +189,10 @@ struct node * delete_node(struct node ** old,int *count,int data)
 }
 int insert(struct node **old,int item)//function to insert item in list
 {
+    //structure variable used to insert
     struct node *fresh;
+
+    //inserting the nodes
     fresh=malloc(sizeof(struct node));
     fresh->data=item;
     fresh->link=NULL;

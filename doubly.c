@@ -1,6 +1,8 @@
+//header file
 #include<stdio.h>
 #include<stdlib.h>
 
+//structure definition
 struct node
 {
     int data;
@@ -10,8 +12,10 @@ struct node
 
 int print(struct node **head)//function to display list
 {
-    struct node *traverse;
+    struct node *traverse;//structure variable use to traverse
     traverse=*head;
+
+    //printing the datas of the list
     while(traverse!=NULL)
     {
         printf("%d ",traverse->data);
@@ -22,8 +26,10 @@ int print(struct node **head)//function to display list
 }
 int create_node_at_end(struct node **old)//add values at the end of the list
 {   
-    int counter=1;
-    struct node *fresh;
+    int counter=1;//counter variable
+    struct node *fresh;//structure variable used to add data
+
+    //adding nodes
     while(counter)
     {
         printf("Enter the data:");
@@ -39,16 +45,22 @@ int create_node_at_end(struct node **old)//add values at the end of the list
     return 1;
 }
 
+//main function
 void main()
 {
+    //structure variables
     struct node *head;
     struct node *old;
-    int counter;
+    int counter;//counter variable
+
+    //reading the head data
     head=malloc(sizeof(struct node));
     printf("Enter the data:");
     scanf("%d",&head->data);
     head->prev=NULL;
     head->next=NULL;
+
+    //reading the next values
     old=head;
     printf("if u want to enter one more value [1-yes/0-no]:");
     scanf("%d",&counter);
@@ -56,6 +68,8 @@ void main()
     {
         create_node_at_end(&old);  
     }
+
+    //printing the datas
     printf("Entered datas:\n");
     print(&head);
 }
