@@ -69,7 +69,7 @@ struct node* back(struct node **obj,int steps)
     }
 
     //printing the info from where we back and now where we are
-    printf("from %s u back %d no u r in %s\n",(*obj)->data,counter-1,traverse->data);
+    printf("from %s u back %d steps now you are in %s\n",(*obj)->data,counter-1,traverse->data);
     
     return traverse;//return the current node 
 }
@@ -95,7 +95,7 @@ struct node *forward(struct node **obj,int steps)
     }
 
     //printing the info from where we back and now where we are
-    printf("from %s u forward %d no u r in %s\n",(*obj)->data,counter-1,traverse->data);
+    printf("from %s u forward %d steps you are in %s\n",(*obj)->data,counter-1,traverse->data);
    
     return traverse;//return the current position
 }

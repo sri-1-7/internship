@@ -31,7 +31,7 @@ void main()
             case 1://visiting another page
             {
                 //reding the page name
-                printf("Enter the search tab:");
+                printf("Enter:");
                 gets(tab);
 
                 obj=visit(&obj,tab);//function call
@@ -41,12 +41,11 @@ void main()
             case 2://back to the page by nth steps
             {
                 //reading the steps
-                printf("enter the steps:");
+                printf("Enter the steps:");
                 scanf("%d",&steps);
 
                 if(steps<=0)
                 {
-                    printf("nothing happens");
                     printf("1-visit\n2-back\n3-forward\n4-exit\n");
                     break;
                 }
@@ -62,7 +61,6 @@ void main()
 
                 if(steps<=0)
                 {
-                    printf("nothing happens\n");
                     printf("1-visit\n2-back\n3-forward\n4-exit\n");
                     break;
                 }
