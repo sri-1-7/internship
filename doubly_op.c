@@ -14,10 +14,14 @@ struct node
 int print(struct node **head)//function to display list
 {
     struct node *traverse;//structure variable use to traverse
+    int counter;//counter variable
     traverse=*head;
-    int counter;
+
+    //reading the order of printing
     printf("if u want to print in reverse order [1-yes/0-no]:");
     scanf("%d",&counter);
+
+    //printing in reverse order
     if(counter==1)
     {
         while(traverse->next!=NULL)
@@ -32,6 +36,7 @@ int print(struct node **head)//function to display list
         }
     return 1;
     }
+
     //printing the datas of the list
     printf("The list is:\n");
     while(traverse!=NULL)
@@ -48,9 +53,9 @@ int create_node_at_end(struct node **old,int *count)//add values at the end of t
 {   
     int counter=1;//counter variable
     struct node *fresh;//structure variable used to add data
-    struct node *traverse=*old;
+    struct node *traverse=*old;//node to traverse to the end
     
-    
+    //serching the end
     if((*count)!=1)
     {
         while(traverse->next!=NULL)
@@ -59,6 +64,7 @@ int create_node_at_end(struct node **old,int *count)//add values at the end of t
             traverse=traverse->next;
         }
     }
+
     //linking nodes and reading data for each nodes
     while(counter)
     {
@@ -81,6 +87,8 @@ struct node* creating_at_begining(struct node **old,int *count)//add nodes at be
 {
     int counter=1;//counter variables
     struct node *fresh;//used to add data at begining
+
+    //linking nodes at the beginning 
     while(counter)
     {
         fresh=malloc(sizeof(struct node));
@@ -101,8 +109,10 @@ struct node* creating_at_begining(struct node **old,int *count)//add nodes at be
 struct node* delete_a_node(struct node **old,int *count)
 {
     struct node *traverse;//struct variable to traverse
-    int counter=1;
-    int data;
+    int counter=1;//counter variable
+    int data;//to get the data to delete
+
+    //reading and deleting the data
     while(counter)
     {
         traverse=*old;
@@ -145,13 +155,16 @@ struct node* delete_a_node(struct node **old,int *count)
         return *old;
 }
 
-struct node* insert_at_pos(struct node **old,int *count)
+struct node* insert_at_pos(struct node **old,int *count)//to inser at position
 {
+    //counter variables
     int counter1=1;
-    struct node *traverse;
-    struct node *fresh;
-    int place;
-    int counter2;
+    int counter2; 
+    struct node *traverse;//structure variable to traverse
+    struct node *fresh;//structure variable to create a node
+    int place;//to get insertion place
+
+    //inserting a node
     while(counter1)
     {
         printf("Enter the position:");
@@ -210,10 +223,12 @@ struct node* insert_at_pos(struct node **old,int *count)
     return *old;
 }
 
-struct node* reverse(struct node **old)
+struct node* reverse(struct node **old)//reversing a list
 {
-    struct node *traverse;
+    struct node *traverse;//to traverse
     traverse=*old;
+
+    //reversing
     while(traverse->next!=NULL)
     {
         traverse=traverse->next;

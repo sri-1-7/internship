@@ -95,7 +95,7 @@ void main()
                 printf("2-add at begging\n4-delete\n5-insert at middle\n6-display\n7-reverse\n8-exit\n");
                 break;
             }
-            case 4:
+            case 4://deleting  node
             {
                 if(count==0)
                 {
@@ -108,7 +108,7 @@ void main()
                 printf("2-add at begning\n3-add at end\n5-insert at middle\n6-display\n7-reverse\n8-exit\n");
                 break;
             }
-            case 5:
+            case 5://insert at position
             {
                 old=head;
                 head=insert_at_pos(&old,&count);
@@ -127,14 +127,14 @@ void main()
                 printf("2-add at begining\n3-add at end\n4-delete\n5-insert at middle\n7-reverse\n8-exit\n");
                 break;
             }
-            case 7:
+            case 7://reverse the list
             {
                 old=head;
                 head=reverse(&old);
                 printf("2-add at begining\n3-add at end\n4-delete\n5-insert at middle\n6-print\n8-exit\n");
                 break;
             }
-            case 8:
+            case 8://exit
             {
                 exit(1);
             }
