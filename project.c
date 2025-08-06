@@ -4,6 +4,7 @@
 #include<stdlib.h>
 #include<time.h>
 #define TIME_TO_LIVE 10
+
 //node structure
 struct node 
 {
@@ -22,6 +23,7 @@ int generate_token(char *token_name);
 int print_token_details(node** details);
 int delete_token();
 int renew_token(char *token_name);
+int display_active_token();
 
 //function definition
 int generate_token(char *token_name)
@@ -39,6 +41,7 @@ int generate_token(char *token_name)
         head->Expiry_time=head->Created_time+TIME_TO_LIVE;
         head->Renew_count=0;
         head->link=NULL;
+        printf("Token generated:\n");
         print_token_details(&head);
     }
     else
@@ -78,6 +81,7 @@ int generate_token(char *token_name)
         newnode->Renew_count=0;
         last_node->link=newnode;
         newnode->link=NULL;
+        printf("Token generated:\n");
         print_token_details(&newnode);
         if(flag==0)
         {
@@ -91,7 +95,7 @@ int print_token_details(node** details)
 {
     printf("\nToken name:%s\n",(*details)->Token_name);
     printf("created time:%s",ctime(&(*details)->Created_time));
-    printf("Expiry time:%s\n",ctime(&(*details)->Expiry_time));
+    printf("Expiry time:%s",ctime(&(*details)->Expiry_time));
     printf("Renew count:%d\n",(*details)->Renew_count);
 }
 
@@ -172,7 +176,40 @@ int renew_token(char *token_name)
     return 1;
 }
 
-
+int display_active_token()
+{
+    node *traverse;
+    int flag=0;
+    int counter=0;
+    traverse=head;
+    while(traverse!=NULL)
+    {
+        if(traverse->Expiry_time<time(NULL))
+        {
+            flag=1;
+            traverse=traverse->link;
+        }
+        else
+        {
+            print_token_details(&traverse);
+            traverse=traverse->link;
+            counter++;
+        }
+    }
+    if(counter==0)
+    {
+        printf("no tokens in active now\n");
+    }
+    else 
+    {
+        printf("%d token(s) are active now\n",counter);
+    }
+    if(flag==1)
+    {
+        delete_token();
+    }
+    return 1;
+}
 //main function
 void main()
 {
@@ -181,7 +218,7 @@ void main()
     printf("MENU:\n1.Generate token.\n2.Renew token.\n3.Display active token details\n4.exit.\n");
     while(1)
     {
-        printf("Enter the choice:");
+        printf("\nEnter the choice:");
         scanf("%d",&choice);
         switch(choice)
         {
@@ -190,6 +227,7 @@ void main()
                 printf("Enter the token name:");
                 scanf("%s",token_name);
                 generate_token(token_name);
+                printf("MENU:\n1.Generate token.\n2.Renew token.\n3.Display active token details\n4.exit.\n");
                 break;
             }
             case 2:
@@ -197,11 +235,15 @@ void main()
                 printf("Enter the token name:");
                 scanf("%s",token_name);
                 renew_token(token_name);
+                printf("MENU:\n1.Generate token.\n2.Renew token.\n3.Display active token details\n4.exit.\n");
                 break;   
             }
             case 3:
             {
-
+                printf("Display token details:\n");
+                display_active_token();
+                printf("MENU:\n1.Generate token.\n2.Renew token.\n3.Display active token details\n4.exit.\n");
+                break;
             }
             case 4:
             {
@@ -210,6 +252,7 @@ void main()
             default:
             {
                 printf("out of the choice\n");
+                printf("MENU:\n1.Generate token.\n2.Renew token.\n3.Display active token details\n4.exit.\n");
             }
         }
     }
