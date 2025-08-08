@@ -50,7 +50,7 @@ int generate_token(char *token_name)
         head->Expiry_time=head->Created_time+TIME_TO_LIVE;
         head->Renew_count=0;
         head->link=NULL;
-        printf("Token generated:\n");
+        printf("Token generated\n");
         print_token_details(&head);//printing generated token details
     }
 
@@ -58,11 +58,12 @@ int generate_token(char *token_name)
     else
     {
         traverse=head;
+
         while(traverse!=NULL)
         {
             if(strcmp(token_name,traverse->Token_name)!=0)
             {
-                if(traverse->Expiry_time<time(NULL))
+                if(traverse->Expiry_time<time(NULL))//checking if the token is expired
                 {
                     flag=1;//if token is expired setting flag is one
                 }
@@ -84,7 +85,8 @@ int generate_token(char *token_name)
                 }
             } 
         }
-        // creating newnode and assigning datas
+
+        // creating newnode and assigning datas and linking them
         newnode=(node*)malloc(sizeof(node));
         newnode->Token_name=(char *)malloc(strlen(token_name));
         strcpy(newnode->Token_name,token_name);
@@ -95,6 +97,7 @@ int generate_token(char *token_name)
         newnode->link=NULL;
         printf("Token generated:\n");
         print_token_details(&newnode);
+
         if(flag==1)
         {
             delete_token();
@@ -108,15 +111,17 @@ int print_token_details(node** details)
    // printing node details
     printf("\nToken name:%s\n",(*details)->Token_name);
     printf("created time:%s",ctime(&(*details)->Created_time));
-    printf("Expiry time:%s",ctime(&(*details)->Expiry_time));
-    printf("Renew count:%d\n",(*details)->Renew_count);
+    printf("Expiry time :%s",ctime(&(*details)->Expiry_time));
+    printf("Renew count :%d\n",(*details)->Renew_count);
 }
 //no input parameter
 int delete_token()
 {
     node *traverse;//to traverse
     node *previous;//to store previous node address
+
     traverse=head;
+
     //deleting process
     while(traverse!=NULL)
     {
@@ -198,10 +203,13 @@ int renew_token(char *token_name)
 //no input parameter
 int display_active_token()
 {
-    node *traverse;//to traverse
-    int flag=0;//flag variable
-    int counter=0;//counter variable
+    node *traverse;      //to traverse
+    int flag=0;          //flag variable
+    int counter=0;       //counter variable
+    time_t current_time; //to storecurrent time
+
     traverse=head;
+
     while(traverse!=NULL)
     {
         if(traverse->Expiry_time<time(NULL))
@@ -219,7 +227,8 @@ int display_active_token()
 
     if(counter==0)
     {
-        printf("no tokens in active now\n");
+        current_time=time(NULL);
+        printf("%sNo tokens in active now\n",ctime(&current_time));
     }
     else 
     {

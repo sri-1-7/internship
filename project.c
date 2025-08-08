@@ -4,7 +4,7 @@
 int main()
 {
     int choice;//to store choice
-    char token_name[10];//to token name
+    char token_name[11];//to token name
 
     //getting choice untill the user enter an exit option
     while(1)
@@ -22,7 +22,7 @@ int main()
             case 1://generate token
             {
                 //getting token name
-                printf("Enter the token name:");
+                printf("Enter the token name (MAXIMUM 11 LETTERS):");
                 scanf("%s",token_name);
 
                 generate_token(token_name);//function call
@@ -33,13 +33,13 @@ int main()
                 //getting token name
                 printf("Enter the token name:");
                 scanf("%s",token_name);
-                renew_token(token_name);//function call
 
+                renew_token(token_name);//function call
                 break;   
             }
             case 3://display active token
             {
-                printf("Display token details:\n");
+                printf("TOKEN DETAILS:\n");
                 display_active_token();//function call
                 break;
             }
@@ -49,9 +49,9 @@ int main()
             }
             default:
             {
-                printf("out of the choice\n");
-                printf("MENU:\n1.Generate token.\n2.Renew token.\n3.Display active token details\n4.exit.\n"); 
+                printf("Out of the choice\n");
             }
         }
     }
+    return 1;
 }
