@@ -1,3 +1,6 @@
+/*main module for program authentication problem*/
+
+//header file
 #include "project_def.c"
 
 //main function
@@ -22,7 +25,7 @@ int main()
             case 1://generate token
             {
                 //getting token name
-                printf("Enter the token name (MAXIMUM 11 LETTERS):");
+                printf("Enter the token name (MAXIMUM 10 LETTERS):");
                 scanf("%s",token_name);
 
                 generate_token(token_name);//function call

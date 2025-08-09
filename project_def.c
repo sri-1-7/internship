@@ -1,3 +1,6 @@
+/*implementation module for program authentication problem*/
+
+
 //header file
 #include<stdio.h>
 #include<string.h>
@@ -24,11 +27,11 @@ typedef struct node node;
 node *head=NULL;            //setting head to NULL
 
 //function declarations
-int generate_token(char *token_name);//to generate token
-int print_token_details(node** details);//to print a token details
-int delete_token();//to delete token
-int renew_token(char *token_name);//to renew token
-int display_active_token();//to display active token
+int generate_token(char *token_name);      //to generate token
+int print_token_details(node** details);   //to print a token details
+int delete_token();                        //to delete token
+int renew_token(char *token_name);         //to renew token
+int display_active_token();                //to display active token
 
 //function definitions
 
@@ -105,6 +108,8 @@ int generate_token(char *token_name)
         return 1;
     }
 }
+
+
 // input parameter:detail
 int print_token_details(node** details)
 {
@@ -114,6 +119,8 @@ int print_token_details(node** details)
     printf("Expiry time :%s",ctime(&(*details)->Expiry_time));
     printf("Renew count :%d\n",(*details)->Renew_count);
 }
+
+
 //no input parameter
 int delete_token()
 {
@@ -150,6 +157,8 @@ int delete_token()
     }
     return 1;
 }
+
+
 //input parameter:token_name
 int renew_token(char *token_name)
 {
@@ -199,6 +208,7 @@ int renew_token(char *token_name)
     }
     return 1;
 }
+
 
 //no input parameter
 int display_active_token()
