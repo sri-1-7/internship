@@ -99,5 +99,8 @@ int main()
     input_nodes_name(No_of_nodes,Nodes_name);      //to get nodes name
     input_matrix(No_of_nodes,Matrix,Nodes_name);   //to get matrix
     display_matrix(Nodes_name,No_of_nodes,Matrix); //to display matrix
+    
+    free(Nodes_name);
+    free(Matrix);
     return 1;
 }
