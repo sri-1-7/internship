@@ -76,9 +76,7 @@ int main()
     int **Matrix;    //to store matrix
     int No_of_nodes; //to store nodes count
     char *Nodes_name;//to store the nodes name of
-    //counter variables
-    int counter1;       
-    int counter2;
+    int counter;    //counter variables
 
 
     //reading the no of nodes
@@ -87,9 +85,9 @@ int main()
 
     //allocating the memory for the matrix
     Matrix=(int**)malloc(No_of_nodes*(sizeof(int*)));//for rows
-    for(counter1=0;counter1<No_of_nodes;counter1++)
+    for(counter=0;counter<No_of_nodes;counter++)
     {
-        Matrix[counter1]=(int*)malloc(No_of_nodes*(sizeof(int)));//for columns
+        Matrix[counter]=(int*)malloc(No_of_nodes*(sizeof(int)));//for columns
     }
 
     //allocating memory to store nodes name 
@@ -100,7 +98,12 @@ int main()
     input_matrix(No_of_nodes,Matrix,Nodes_name);   //to get matrix
     display_matrix(Nodes_name,No_of_nodes,Matrix); //to display matrix
     
-    free(Nodes_name);
+    for (counter=0; counter<No_of_nodes;counter++)
+    {
+      free(Matrix[counter]);
+    }
     free(Matrix);
+    free(Nodes_name);
+
     return 1;
 }
