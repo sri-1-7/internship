@@ -11,17 +11,17 @@ struct node
     struct node *address;   //address part
 };
 typedef struct node node;
+node *head =NULL;   //head node of list
 
 //function declaration
-int push(node **head);      //to perform push operation
-int pop(node **head);       //to perform pop operation
-int isempty(node **head);   //to check stack state
-int display(node **head);   //to display
+int push();      //to perform push operation
+int pop();       //to perform pop operation
+int isempty();   //to check stack state
+int display();   //to display
 
 //function definition
 
-//input parameter: node **head
-int push(node **head)
+int push()
 {
     node *newnode;  //to create a node
 
@@ -29,45 +29,44 @@ int push(node **head)
     printf("Enter the value to push:");
     newnode=(node *)malloc(sizeof(node));
     scanf("%d",&newnode->data);
-    if(*head!=NULL)
+    if(head!=NULL)
     {
-       newnode->address=*head;
-       (*head)=newnode; 
+       newnode->address=head;
+       (head)=newnode; 
        
     }
     else
     {
         newnode->address=NULL;
-        *head=newnode;
+        head=newnode;
     }
     return 1;
 } 
 
-//input parameter:node **head
-int pop(node **head)
+int pop()
 {
     node *temp; //to delete a node
 
     //deleting operation
-    if(*(head)==NULL)
+    if(head==NULL)
     {
         printf("stack is empty\n");
         return 0;
     }
     else
     {
-       temp=*head;
+       temp=head;
        printf("%d is poped\n",temp->data);
-       *head=(*head)->address;
+       head=head->address;
        free(temp); 
        return 1;
     }
 }
 
-//input parameter:node **head
-int isempty(node **head)
+
+int isempty()
 {
-    if(*head==NULL)
+    if(head==NULL)
     {
         printf("Stack is empty\n");
         return 1;
@@ -79,18 +78,17 @@ int isempty(node **head)
     }
 }
 
-//input parameter: node ** head
-int display(node **head)
+int display()
 {
     node *traverse;   //to traverse
 
-    if(*head==NULL)
+    if(head==NULL)
     {
         printf("Stack is empty\n");
         return 0;
     }
 
-    traverse=*head;
+    traverse=head;
     //traversing and printing datas
     while(traverse!=NULL)
     {
@@ -104,7 +102,6 @@ int display(node **head)
 int main()
 {
     int choice;         //to store choice
-    node *head =NULL;   //head node of list
 
     while(1)
     {
@@ -118,22 +115,22 @@ int main()
         {
             case 1: //push operation
             {
-                push(&head);
+                push();
                 break;
             }
             case 2: //pop operation
             {
-                pop(&head);
+                pop();
                 break;
             }
             case 3: //check stack state
             {
-                isempty(&head);
+                isempty();
                 break;
             }
             case 4:
             {
-                display(&head);
+                display();
                 break;
             }
             case 5:
