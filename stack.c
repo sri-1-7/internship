@@ -1,108 +1,15 @@
 /*stack implementation using linked list*/
 
 //header file
-#include<stdio.h>
-#include<stdlib.h>
+#include"create_node.c"
 
-//node declaration
-struct node
-{
-    int data;               //data part 
-    struct node *address;   //address part
-};
-typedef struct node node;
-node *head =NULL;   //head node of list
-
-//function declaration
-int push();      //to perform push operation
-int pop();       //to perform pop operation
-int isempty();   //to check stack state
-int display();   //to display
-
-//function definition
-
-int push()
-{
-    node *newnode;  //to create a node
-
-    //reading inputs and creating nodes
-    printf("Enter the value to push:");
-    newnode=(node *)malloc(sizeof(node));
-    scanf("%d",&newnode->data);
-    if(head!=NULL)
-    {
-       newnode->address=head;
-       (head)=newnode; 
-       
-    }
-    else
-    {
-        newnode->address=NULL;
-        head=newnode;
-    }
-    return 1;
-} 
-
-int pop()
-{
-    node *temp; //to delete a node
-
-    //deleting operation
-    if(head==NULL)
-    {
-        printf("stack is empty\n");
-        return 0;
-    }
-    else
-    {
-       temp=head;
-       printf("%d is poped\n",temp->data);
-       head=head->address;
-       free(temp); 
-       return 1;
-    }
-}
-
-
-int isempty()
-{
-    if(head==NULL)
-    {
-        printf("Stack is empty\n");
-        return 1;
-    }
-    else
-    {
-        printf("Stack is not empty\n");
-        return 0;
-    }
-}
-
-int display()
-{
-    node *traverse;   //to traverse
-
-    if(head==NULL)
-    {
-        printf("Stack is empty\n");
-        return 0;
-    }
-
-    traverse=head;
-    //traversing and printing datas
-    while(traverse!=NULL)
-    {
-        printf("%d ",traverse->data);
-        traverse=traverse->address;
-    }
-    printf("\n");
-    return 1;
-}
 //main function
 int main()
 {
-    int choice;         //to store choice
-
+    struct node *head=NULL; //head of the list
+    int choice;             //to store choice
+    int count=0;            //to store count of the nodes
+    int counter;            //counter variable
     while(1)
     {
         //printing menu and reading choice 
@@ -114,23 +21,44 @@ int main()
         switch(choice)
         {
             case 1: //push operation
-            {
-                push();
+            {   
+                if(head==NULL)
+                {
+                    printf("enter the data:");
+                    head=malloc(sizeof(struct node));
+                    scanf("%d",&head->data);
+                    head->link=NULL;  
+                    count++;
+                }
+                printf("if u want to enter one more value [1-yes/0-no]:");
+                scanf("%d",&counter);
+                if(counter==1)
+                {
+                create_node_at_first(&head,&count);
                 break;
+                }
             }
             case 2: //pop operation
             {
-                pop();
+                delete_node_formal(&head,&count);
                 break;
             }
             case 3: //check stack state
             {
-                isempty();
+                if(count!=0)
+                {
+                    printf("Stack have elements\n");
+                }
+                else
+                {
+                    printf("Stack is empty\n");
+                }
                 break;
             }
-            case 4:
+            case 4: //to display
             {
-                display();
+                printf("data count:%d\n",count);
+                print(&head);
                 break;
             }
             case 5:

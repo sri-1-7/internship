@@ -44,7 +44,7 @@ struct node* create_node_at_first(struct node **add,int *count)//add values at t
         fresh->link=*add;
         (*count)++;
         *add=fresh;
-        printf("Want to create an another node [1-yes/0-no]:");
+        printf("Want to enter an another data [1-yes/0-no]:");
         scanf("%d",&counter);
     }
     return fresh;
@@ -72,6 +72,11 @@ int print(struct node **head)//function to display list
     //structure variables used to traverse
     struct node *traverse;
     traverse=*head;
+    if(traverse==NULL)
+    {
+        printf("Stack is empty\n");
+        return 0;
+    }
     while(traverse!=NULL)
     {
         printf("%d ",traverse->data);
@@ -198,4 +203,29 @@ int insert(struct node **old,int item)//function to insert item in list
     fresh->link=NULL;
     (*old)->link=fresh;
     *old=(*old)->link;
+}
+struct node * delete_node_formal(struct node ** old,int *count)//to delete a node
+{
+    struct node *traverse;  //structure variables used to deleteting a node
+    int counter=1;          //counter variable
+
+    while(counter)
+    {
+        traverse=*old;
+        if((*count)!=0)
+        {  
+            printf("%d is poped\n",traverse->data);
+            (*old)=(*old)->link;
+            free(traverse); 
+            (*count)--;
+            printf("Do u want to delete 1 more data [1-yes/0-no]:");
+            scanf("%d",&counter);
+        }
+        else
+        {
+            printf("Stack is empty\n");
+            counter=0;
+        }
+    }
+    return *old;
 }
