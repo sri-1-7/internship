@@ -3,6 +3,8 @@
 //header file
 #include"create_node.c"
 
+#define TRUE 1
+
 //main function
 int main()
 {
@@ -10,7 +12,7 @@ int main()
     int choice;             //to store choice
     int count=0;            //to store count of the nodes
     int counter;            //counter variable
-    while(1)
+    while(TRUE)
     {
         //printing menu and reading choice 
         printf("\nMENU:\n1.Push.\n2.Pop.\n3.isempty\n4.Display.\n5.exit\n");

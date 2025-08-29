@@ -18,7 +18,7 @@ struct node *stack=NULL;
 
 //function definition
 int push(char symbol);  //push operation
-int pop();              //pop operation
+char pop();              //pop operation
 
 //function declaration
 int push(char symbol)
